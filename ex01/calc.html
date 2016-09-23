@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>calc</title>
+    </head>
+    <body>
+    <form name="calcu" action="calc.html" onsubmit="return answer()" method="post">
+            <input type="text" name="left"/>
+            <select name="operation">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+            <input type="text" name="right"/>
+            <input type="submit" name="submit" value="Try me!"/>
+    </form>
+    <script>
+    setInterval(function (){alert("Please, use me...");}, 30000);
+        function answer()
+        {
+            var submit = document.forms["calcu"]["submit"].value;
+            var left = document.forms["calcu"]["left"].value;
+            var op = document.forms["calcu"]["operation"].value;
+            var right = document.forms["calcu"]["right"].value;
+            var ans;
+
+            if (parseInt(left) < 0 || parseInt(right) < 0)
+            {
+                alert('Error :(');
+                return ;
+            }
+            if ((op == "/" || op == '%') && parseInt(right) == 0)
+            {
+                console.log("It's over 9000!");
+                alert("It's over 9000!");
+                return ;
+            }
+            if (op == "+")
+            {
+                ans = parseInt(left) + parseInt(right);
+            }
+            else if (op == "-")
+            {
+                ans = parseInt(left) - parseInt(right);
+            }
+            else if (op == "*")
+            {
+                ans = parseInt(left) * parseInt(right);
+            }
+            else if (op == "/")
+            {
+                ans = parseInt(left) / parseInt(right);
+            }
+            else if (op == "%")
+            {
+                ans = parseInt(left) % parseInt(right);
+            }
+            console.log(ans);
+            alert(ans);
+        }
+    </script>
+    </body>
+</html>

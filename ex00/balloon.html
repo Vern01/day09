@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ballon</title>
+        <style>
+            div.ballon_style {
+                background-color: red;
+                border-radius: 50%;
+                height: 200px;
+                width: 200px
+            }
+        </style>
+    </head>
+    <body>
+        <div id="balloon" data-state="1" class="ballon_style" onclick="increase_size()" onmouseout="leave_el()"></div>
+        <script>
+            function increase_size()
+            {
+                var el = document.getElementById('balloon');
+                var state = el.getAttribute('data-state');
+                var size = el.offsetHeight + 10;
+                if (state == 1) //Ross will make a mistake here!
+                {
+                    el.setAttribute('data-state', '2');
+                    el.style.backgroundColor = "green";
+                }
+                else if (state == 2)
+                {
+                    el.setAttribute('data-state', '3');
+                    el.style.backgroundColor = "blue";
+                }
+                else if (state == 3)
+                {
+                    el.setAttribute('data-state', '1');
+                    el.style.backgroundColor = "red";
+                }
+                if (size > 420)
+                {
+                    el.style.height = "200px";
+                    el.style.width = "200px";
+                }
+                else
+                {
+                    el.style.height = size + 'px';
+                    el.style.width = size + 'px';
+                }
+            }
+            function leave_el()
+            {
+                var el = document.getElementById('balloon');
+                var state = el.getAttribute('data-state');
+                var size = el.offsetHeight - 5;
+                if (state == 1)
+                {
+                    el.setAttribute('data-state', '3');
+                    el.style.backgroundColor = 'blue';
+                }
+                else if (state == 2)
+                {
+                    el.setAttribute('data-state', '1');
+                    el.style.backgroundColor = "red";
+                }
+                else if (state == 3)
+                {
+                    el.setAttribute('data-state', '2');
+                    el.style.backgroundColor = "green";
+                }
+                if (size < 200)
+                {
+                    el.style.height = "200px";
+                    el.style.width = "200px";
+                }
+                else
+                {
+                    el.style.height = size + "px";
+                    el.style.width = size + "px";
+                }
+            }
+        </script>
+    </body>
+</html>
